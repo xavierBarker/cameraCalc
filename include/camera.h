@@ -33,6 +33,14 @@ class camera
 
         return 0;
     }
+
+
+    virtual int calculateFilmBackHeight()
+    {
+        std::cout << "you ran the defalt calculate film back height function" << std::endl;
+
+        return 0;
+    }
 };
 
 #endif

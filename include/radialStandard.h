@@ -10,12 +10,12 @@ class radialStandard : public camera
     public:
     radialStandard()
     {
-        std::cout << "regualr camera class constructed" << std::endl;
+        std::cout << "radialStandard camera lens class constructed" << std::endl;
     }
 
     ~radialStandard()
     {
-        std::cout << "regualr camera class destructed" << std::endl;
+        std::cout << "radialStandard camera lens class destructed" << std::endl;
     }
 
 
@@ -29,14 +29,32 @@ class radialStandard : public camera
         return width;
     }
 
-        virtual int getFocalLength()
+        double getAspectRatio()
+    {
+        double aspectRatio;
+        std::cout << "what is your aspect ratio" << std::endl;
+        std::cin >> aspectRatio;
+
+        return aspectRatio;
+    }
+
+        int getFocalLength()
     {
         int focalLength;
-        std::cout << "what is your filmback width" << std::endl;
+        std::cout << "what is your focal length" << std::endl;
         std::cin >> focalLength;
 
         return focalLength;
     }
+
+        int calculateFilmBackHeight(int filmBackWidth,  double aspectRatio, double pixelAspectRatio = 1)
+        {
+
+            int filmBackHeight = static_cast<int>(filmBackWidth * (1/aspectRatio) * pixelAspectRatio);
+            return filmBackHeight;
+        }
+
+    
 };
 
 #endif
