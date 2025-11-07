@@ -1,11 +1,13 @@
 #include <iostream>
-#include <camera.h>
+#include "camera.h"
+#include "lens.h"
+#include "resolution.h"
 #ifndef RADIALSTANDARD_H
 #define RADIALSTANDARD_H
 
 
 
-class radialStandard : public camera 
+class radialStandard : public camera, public lens
 {
     public:
     radialStandard()
@@ -19,8 +21,17 @@ class radialStandard : public camera
     }
 
 
+    void init(int filmBackWidth, int filmBackHeight, float focalLength, float aspectRatio, dimentions distorted, dimentions undistorted)
+    {
+                filmBackWidth = getResolution(distorted);
+                focalLength = getFocalLength();
+                aspectRatio = getAspectRatio();
+                filmBackHeight = calculateFilmBackHeight(filmBackWidth, aspectRatio);
+                
+    }
 
-        int getResolution()
+
+        int getResolution(dimentions distorted)
     {
         int width;
         std::cout << "what is your filmback width" << std::endl;
@@ -38,7 +49,7 @@ class radialStandard : public camera
         return aspectRatio;
     }
 
-        int getFocalLength()
+        int getFocalLength() override
     {
         int focalLength;
         std::cout << "what is your focal length" << std::endl;
@@ -53,6 +64,8 @@ class radialStandard : public camera
             int filmBackHeight = static_cast<int>(filmBackWidth * (1/aspectRatio) * pixelAspectRatio);
             return filmBackHeight;
         }
+
+
 
     
 };

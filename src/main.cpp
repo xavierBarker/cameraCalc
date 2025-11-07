@@ -1,5 +1,7 @@
 #include <iostream>
-#include <radialStandard.h>
+#include "radialStandard.h"
+#include "programInit.h"
+
 
 int main() {
 
@@ -9,26 +11,10 @@ int main() {
     double pixelAspectRatio;
     double focalLength;
     double cameraScale;
+    dimentions distorted;
+    dimentions undistorted;
 
 
-
-    std::cout << "program running" << std::endl;
-
-
-    radialStandard* radialCamera = new radialStandard();
-
-
-    filmBackWidth = radialCamera->getResolution();
-    focalLength = radialCamera->getFocalLength();
-    aspectRatio = radialCamera->getAspectRatio();
-    filmBackHeight = radialCamera->calculateFilmBackHeight(filmBackWidth, aspectRatio);
-
-    std::cout << "filmBack width is set to: " << filmBackWidth << std::endl;
-    std::cout << "filmBack height is set to: " << filmBackHeight << std::endl;
-    std::cout << "focal length is set to: " << focalLength << std::endl;
-
-
-
-    delete radialCamera;
+    programInit(filmBackWidth, focalLength, aspectRatio, filmBackHeight, distorted, undistorted);
 
 }

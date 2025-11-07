@@ -27,13 +27,7 @@ class camera
         return 0;
     }
 
-    virtual int getFocalLength()
-    {
-            std::cout << "you ran the defalt get focal length function" << std::endl;
-
-        return 0;
-    }
-
+    
 
     virtual int calculateFilmBackHeight()
     {
