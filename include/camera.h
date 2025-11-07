@@ -1,4 +1,7 @@
 #include <iostream>
+
+#include "resolution.h"
+
 #ifndef CAMERA_H
 #define CAMERA_H
 
@@ -19,13 +22,14 @@ class camera
 
 
 
-    virtual int getResolution()
+    virtual dimentions getResolution()
     {
 
         std::cout << "you ran the defalt get resolution function" << std::endl;
 
-        return 0;
+        return {0,0};
     }
+
 
     
 

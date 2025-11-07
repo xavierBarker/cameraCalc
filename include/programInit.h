@@ -31,46 +31,46 @@ class programInit
 
         ~programInit(){};
 
-        programInit(int filmBackWidth, int filmBackHeight, float focalLength, float aspectRatio, dimentions distorted, dimentions undistorted)
+        programInit(int filmBackWidth, int filmBackHeight, float focalLength, float aspectRatio, dimentions distorted, dimentions undistorted, float cameraScale)
         {
 
-        std::cout << "what do you need? "<< std::endl;
-        std::cout << "avaialbe choices: "<< std::endl;
+            std::cout << "what do you need? "<< std::endl;
+            std::cout << "avaialbe choices: "<< std::endl;
 
-        std::list<std::string> lensChoices = {"RADIALSTANDARD", "FISHEYE", "ANAMORPHIC", "UNPICKED"};
-        for (std::string lensChoice : lensChoices)
-        {
-             std::cout << lensChoice << std::endl;
-        }
-        std::string temp;
-        
-        
-        enum lensType currentLens = UNPICKED;
-        std::cin>>temp; 
-        currentLens = stringToEnum(temp);
-
-        switch (currentLens)
-        {
-            case RADIALSTANDARD: 
-                
-                std::cout << "you selected Radial Standard" << std::endl;
-                
-                CL = new radialStandard();
-
-                CL->init(filmBackWidth, filmBackHeight, focalLength, aspectRatio);
-
-            break;
-
-            default:
-            
-            std::cout << "no applicable lens selected, program exiting" << std::endl;
-
-            break;
+            std::list<std::string> lensChoices = {"RADIALSTANDARD", "FISHEYE", "ANAMORPHIC", "UNPICKED"};
+            for (std::string lensChoice : lensChoices)
+            {
+                 std::cout << lensChoice << std::endl;
+            }
+            std::string temp;
 
 
+            enum lensType currentLens = UNPICKED;
+            std::cin>>temp; 
+            currentLens = stringToEnum(temp);
 
-        }
-        
+            switch (currentLens)
+            {
+                case RADIALSTANDARD: 
+
+                    std::cout << "you selected Radial Standard" << std::endl;
+
+                    CL = new radialStandard();
+
+                    CL->init(filmBackWidth, filmBackHeight, focalLength, aspectRatio, distorted, undistorted, cameraScale);
+
+                    cameraScale = CL->calculateCameraScale(distorted, undistorted);
+
+                    CL->printLensDetails(filmBackWidth, focalLength, aspectRatio, distorted, undistorted, cameraScale);
+
+                break;
+
+                default:
+
+                std::cout << "no applicable lens selected, program exiting" << std::endl;
+
+                break;
+            }   
         }
 
 
@@ -86,7 +86,6 @@ class programInit
             else  { return UNPICKED; }
 
         }
-
 
     private:
 

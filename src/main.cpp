@@ -15,6 +15,9 @@ int main() {
     dimentions undistorted;
 
 
-    programInit(filmBackWidth, focalLength, aspectRatio, filmBackHeight, distorted, undistorted);
+    programInit(filmBackWidth, focalLength, aspectRatio, filmBackHeight, distorted, undistorted, cameraScale);
+
+
+
 
 }

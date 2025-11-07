@@ -6,7 +6,8 @@
 
 struct dimentions 
 {
-    std::vector<int> dimentions {0, 0};
+    int x = 0;
+    int y = 0;
 };
 
 
